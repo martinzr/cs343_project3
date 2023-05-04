@@ -78,6 +78,33 @@ const options = {
 
 let countries = []
 
+const sorted = document.getElementById("sort");
+console.log(sorted)
+sorted.onclick = (ev) => {
+  if (countries.length == 0)
+  {
+    alert("Nothing to Sort")
+  }
+  else
+  {
+    let country_result = document.getElementById("movie-results")
+    while (country_result.firstChild) {
+      country_result.removeChild(country_result.firstChild)
+    }
+    countries.sort()
+    let list = document.getElementById("movie-results")
+    let name = document.createElement('h1');
+    name.innerText = ev.target.innerText;
+    list.appendChild(name);
+    list.append(name);
+    for (var i = 0; i < countries.length; i++) {
+      var listItem = document.createElement("li");
+      listItem.innerText = countries[i];
+      list.appendChild(listItem);
+    }
+  }
+};
+
 const searchNetflix = (ev) => {
 
   let country_result = document.getElementById("movie-results")
